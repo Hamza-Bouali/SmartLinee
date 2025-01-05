@@ -519,7 +519,7 @@ export const Dashboard = () => {
           />
         </div>
 
-        <RecentUsers />
+        
       </div>
     </div>
   );
