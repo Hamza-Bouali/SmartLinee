@@ -19,7 +19,6 @@ const neutral = {
 };
 
 export const Dashboard = () => {
-  const [subscriptionDistribution, setSubscriptionDistribution] = useState([]);
   const [adminsPerOrg, setAdminsPerOrg] = useState([]);
   const [agentStatus, setAgentStatus] = useState([]);
   const [callType, setCallType] = useState([]);
@@ -42,54 +41,26 @@ export const Dashboard = () => {
     const fetchData = async () => {
       try {
         const [
-          subscriptionRes,
-          adminsRes,
-          agentStatusRes,
-          callTypeRes,
-          avgCallDurationRes,
-          aiSuccessRateRes,
-          satisfactionScoreRes,
-          callsHandledRes,
-          totalCallsRes,
-          avgWaitTimeRes,
-          serviceLevelRes,
-          conversionRateRes,
-          interactionTypeRes,
-          callCategoryRes,
-          transcriptLengthRes,
+          Data
         ] = await Promise.all([
-          axios.get("http://127.0.0.1:8000/api/subscription-distribution/"),
-          axios.get("http://127.0.0.1:8000/api/admins-per-organization/"),
-          axios.get("http://127.0.0.1:8000/api/agent-status-distribution/"),
-          axios.get("http://127.0.0.1:8000/api/call-type-distribution/"),
-          axios.get("http://127.0.0.1:8000/api/average-call-duration/"),
-          axios.get("http://127.0.0.1:8000/api/ai-success-rate/"),
-          axios.get("http://127.0.0.1:8000/api/satisfaction-score-distribution/"),
-          axios.get("http://127.0.0.1:8000/api/calls-handled-by-agent/"),
-          axios.get("http://127.0.0.1:8000/api/total-calls-over-time/"),
-          axios.get("http://127.0.0.1:8000/api/average-wait-time/"),
-          axios.get("http://127.0.0.1:8000/api/service-level-percentage/"),
-          axios.get("http://127.0.0.1:8000/api/conversion-rate-over-time/"),
-          axios.get("http://127.0.0.1:8000/api/interaction-type-distribution/"),
-          axios.get("http://127.0.0.1:8000/api/call-category-distribution/"),
-          axios.get("http://127.0.0.1:8000/api/transcript-length-distribution/"),
+          axios.get("http://localhost:8000/api/dashboard-data/"),
         ]);
 
-        setSubscriptionDistribution(subscriptionRes.data);
-        setAdminsPerOrg(adminsRes.data);
-        setAgentStatus(agentStatusRes.data);
-        setCallType(callTypeRes.data);
-        setAvgCallDuration(avgCallDurationRes.data);
-        setAISuccessRate(aiSuccessRateRes.data);
-        setSatisfactionScore(satisfactionScoreRes.data);
-        setCallsHandledByAgent(callsHandledRes.data);
-        setTotalCallsOverTime(totalCallsRes.data);
-        setAvgWaitTime(avgWaitTimeRes.data);
-        setServiceLevelPercentage(serviceLevelRes.data);
-        setConversionRate(conversionRateRes.data);
-        setInteractionType(interactionTypeRes.data);
-        setCallCategory(callCategoryRes.data);
-        setTranscriptLength(transcriptLengthRes.data);
+        
+        setAdminsPerOrg(Data.data.admins_per_organization);
+        setAgentStatus(Data.data.agent_status_distribution);
+        setCallType(Data.data.call_type_distribution);
+        setAvgCallDuration(Data.data.average_call_duration);
+        setAISuccessRate(Data.data.ai_success_rate);
+        setSatisfactionScore(Data.data.satisfaction_score_distribution);
+        setCallsHandledByAgent(Data.data.calls_handled_by_agent);
+        setTotalCallsOverTime(Data.data.total_calls_over_time);
+        setAvgWaitTime(Data.data.average_wait_time);
+        setServiceLevelPercentage(Data.data.service_level_percentage);
+        setConversionRate(Data.data.conversion_rate);
+        setInteractionType(Data.data.interaction_type_distribution);
+        setCallCategory(Data.data.call_category_distribution);
+        setTranscriptLength(Data.data.transcript_length_distribution);
       } catch (error) {
         console.error("Error fetching data:", error);
       } finally {
@@ -125,18 +96,6 @@ export const Dashboard = () => {
         <QuickActions />
 
         <div className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {/* Subscription Plan Distribution */}
-          <Chart
-            type="bar"
-            series={[{ data: subscriptionDistribution.map((item) => item.count) }]}
-            options={{
-              chart: { toolbar: { show: true } },
-              xaxis: { categories: ['Premium', 'Enterprise', 'Basic'] },
-              title: { text: 'Subscription Plan Distribution' }
-            }}
-            width="100%"
-            height="300px"
-          />
 
           {/* Admins per Organization */}
           <Chart
@@ -193,7 +152,7 @@ export const Dashboard = () => {
           {/* AI Success Rate Over Time */}
           <Chart
             type="line"
-            series={[{ name: 'AI Success Rate', data: aiSuccessRate.map((item) => parseInt(item.avg_success_rate)) }]}
+            series={[{ name: 'AI Success Rate', data: aiSuccessRate.map((item) => item.avg_success_rate) }]}
             options={{
               chart: { toolbar: { show: false } },
               xaxis: { categories: aiSuccessRate.map((item) => item.date) },
