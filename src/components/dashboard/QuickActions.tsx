@@ -133,7 +133,7 @@ export function QuickActions() {
     });
   
     try {
-      const response = await axios.post("http://localhost:8000/api/upload/", formData, {
+      const response = await axios.post("https://d0rgham.pythonanywhere.com/api/upload/", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
