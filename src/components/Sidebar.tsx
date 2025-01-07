@@ -5,6 +5,7 @@ import {
   Settings, 
   BarChart3, 
   CreditCard,
+  History,
   Bell,
   LogOut
 } from 'lucide-react';
@@ -18,6 +19,7 @@ const menuItems = [
   { icon: Users, label: 'Users', id: 'users' },
   { icon: CreditCard, label: 'Billing', id: 'billing' },
   { icon: Bell, label: 'Notifications', id: 'notifications' },
+  { icon: History, label: 'support', id: 'callHistory' },
   { icon: Settings, label: 'Settings', id: 'settings' },
 ];
 
