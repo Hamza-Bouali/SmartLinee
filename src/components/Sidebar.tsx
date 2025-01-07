@@ -16,7 +16,7 @@ interface SidebarProps {
 
 const menuItems = [
   { icon: LayoutDashboard, label: 'Dashboard', id: 'dashboard' },
-  { icon: Users, label: 'Users', id: 'users' },
+  { icon: Users, label: 'Agents', id: 'users' },
   { icon: CreditCard, label: 'Billing', id: 'billing' },
   { icon: Bell, label: 'Notifications', id: 'notifications' },
   { icon: History, label: 'support', id: 'callHistory' },
