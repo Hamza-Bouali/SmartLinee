@@ -11,7 +11,6 @@ const Chart = lazy(() => import("react-apexcharts"));
 
 export const Dashboard = () => {
   const [dashboardData, setDashboardData] = useState({
-    
     agentStatus: [],
     callType: [],
     avgCallDuration: [],
@@ -36,7 +35,6 @@ export const Dashboard = () => {
       try {
         const response = await axios.get("https://d0rgham.pythonanywhere.com/api/dashboard-data/");
         setDashboardData({
-          
           agentStatus: response.data.agent_status_distribution || [],
           callType: response.data.call_type_distribution || [],
           avgCallDuration: response.data.average_call_duration || [],
@@ -65,8 +63,6 @@ export const Dashboard = () => {
   const [total_users, setTotalUsers] = useState(0);
 
   // Memoize data transformations
-  
-
   const agentStatusData = useMemo(() => dashboardData.agentStatus.map((item) => item.count), [dashboardData.agentStatus]);
   const agentStatusLabels = useMemo(() => dashboardData.agentStatus.map((item) => item.status), [dashboardData.agentStatus]);
 
@@ -126,13 +122,14 @@ export const Dashboard = () => {
 
   return (
     <div id="webcrumbs" className="w-full h-full p-4">
-      <div className="bg-white rounded-lg shadow w-full h-full p-10">
+      <div className="bg-white rounded-lg shadow w-full h-full p-4 md:p-6 lg:p-10">
         <div className="mb-8">
-          <h1 className="text-2xl font-bold text-gray-900 font-title">Dashboard Overview</h1>
-          <p className="text-gray-600 mt-1">Welcome back, Admin</p>
+          <h1 className="text-xl md:text-2xl font-bold text-gray-900 font-title">Dashboard Overview</h1>
+          <p className="text-gray-600 mt-1 text-sm md:text-base">Welcome back, Admin</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+        {/* Stats Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
           <StatsCard title="Total Users" value={total_users.toString()} icon={Users} trend={12} />
           <StatsCard title="Monthly Revenue" value="$54,321" icon={DollarSign} trend={8} />
           <StatsCard title="Active Sessions" value="2,456" icon={BarChart3} trend={-3} />
@@ -140,10 +137,8 @@ export const Dashboard = () => {
 
         <QuickActions />
 
-        <div className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        
-          
-
+        {/* Charts */}
+        <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {/* Agent Status Distribution */}
           <Suspense fallback={<div>Loading Chart...</div>}>
             <Chart
@@ -325,21 +320,20 @@ export const Dashboard = () => {
           </Suspense>
 
           {/* Transcript Length Distribution */}
-          <div className="col-span-3">
-          <Suspense fallback={<div>Loading Chart...</div>}>
-            <Chart
-              type="bar"
-              series={[{ data: transcriptLengthData }]}
-              options={{
-                chart: { toolbar: { show: false } },
-                xaxis: { categories: transcriptLengthCategories },
-                title: { text: "Transcript Length Distribution" },
-              }}
-              width="100%"
-              height="300px"
-              
-            />
-          </Suspense>
+          <div className="col-span-1 sm:col-span-2 lg:col-span-3">
+            <Suspense fallback={<div>Loading Chart...</div>}>
+              <Chart
+                type="bar"
+                series={[{ data: transcriptLengthData }]}
+                options={{
+                  chart: { toolbar: { show: false } },
+                  xaxis: { categories: transcriptLengthCategories },
+                  title: { text: "Transcript Length Distribution" },
+                }}
+                width="100%"
+                height="300px"
+              />
+            </Suspense>
           </div>
         </div>
       </div>
