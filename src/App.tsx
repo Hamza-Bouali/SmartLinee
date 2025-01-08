@@ -37,7 +37,7 @@ function App() {
   return (
     <div className="flex bg-gray-50">
       <Sidebar onNavigate={setCurrentPage} />
-      <main className="flex-1 overflow-y-auto m-8">
+      <main className="flex-1 overflow-y-auto ">
         {renderPage()}
       </main>
     </div>
