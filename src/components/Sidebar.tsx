@@ -5,8 +5,11 @@ import {
   Settings, 
   BarChart3, 
   CreditCard,
+  ShoppingCart,
+  Package,
   History,
   Bell,
+  Contact2,
   LogOut
 } from 'lucide-react';
 
@@ -17,8 +20,8 @@ interface SidebarProps {
 const menuItems = [
   { icon: LayoutDashboard, label: 'Dashboard', id: 'dashboard' },
   { icon: Users, label: 'Agents', id: 'users' },
-  { icon: BarChart3, label: 'Support', id: 'support' },
-  { icon: Bell, label: 'Leads', id: 'leads' },
+  { icon: Package, label: 'Orders', id: 'orders' },
+  { icon: Contact2, label: 'Leads', id: 'leads' },
   { icon: History, label: 'support', id: 'callHistory' },
   { icon: Settings, label: 'Settings', id: 'settings' },
 ];

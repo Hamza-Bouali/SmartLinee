@@ -21,7 +21,7 @@ function App() {
         return <UsersPage />;
       case 'callHistory': // Use a consistent naming convention
         return <Summary callHistory={mockCallHistory} />;
-      case 'support':
+      case 'orders':
         return <OrdersView />;
       case 'leads':
         return <LeadsView />
