@@ -325,6 +325,7 @@ export const Dashboard = () => {
           </Suspense>
 
           {/* Transcript Length Distribution */}
+          <div className="col-span-3">
           <Suspense fallback={<div>Loading Chart...</div>}>
             <Chart
               type="bar"
@@ -336,8 +337,10 @@ export const Dashboard = () => {
               }}
               width="100%"
               height="300px"
+              
             />
           </Suspense>
+          </div>
         </div>
       </div>
     </div>
