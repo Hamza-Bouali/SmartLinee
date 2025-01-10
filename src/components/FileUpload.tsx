@@ -4,6 +4,7 @@ import { Upload } from 'lucide-react';
 interface FileUploadProps {
   accept: string;
   label: string;
+  disabled?: boolean;
   onUpload: (file: File) => Promise<void>; // onUpload is a function that returns a Promise
 }
 
