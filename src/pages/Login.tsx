@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useAuth } from './AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { User, Lock, Check } from 'lucide-react';
+import Logo from '../assets/Logo.png';
 
 interface LoginFormData {
     username: string;
@@ -40,9 +41,18 @@ const Login: React.FC = () => {
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+        <div
+            className="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8"
+            style={{
+                backgroundImage: 'url(https://images.pexels.com/photos/8728291/pexels-photo-8728291.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)',
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+            }}
+        >
             <div className="max-w-md w-full space-y-8 bg-white p-8 rounded-lg shadow-lg">
-                <h2 className="text-center text-3xl font-extrabold text-gray-900">Login</h2>
+                <h2 className="text-center text-3xl font-extrabold text-gray-900">
+                    <img src={Logo}/>
+                </h2>
                 {error && <p className="text-center text-red-500">{error}</p>}
                 <form onSubmit={handleSubmit} className="mt-8 space-y-6">
                     <div>
