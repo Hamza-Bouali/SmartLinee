@@ -22,7 +22,7 @@ const menuItems = [
   { icon: Users, label: 'Clients', id: 'users' },
   { icon: Package, label: 'Orders', id: 'orders' },
   { icon: Contact2, label: 'Leads', id: 'leads' },
-  { icon: History, label: 'Support', id: 'callHistory' },
+  { icon: History, label: 'Support', id: 'support' },
   { icon: Bot, label: 'Agents', id: 'settings' },
 ];
 
@@ -70,7 +70,7 @@ export function Sidebar() {
             <li key={item.label}>
               <button
                 onClick={() => handleNavigation(item.id)}
-                className="flex items-center text-xl gap-3 px-4 py-3 text-gray-600 font-bold hover:bg-orange-200 rounded-lg transition-colors w-full text-left"
+                className="flex items-center text-xl gap-3 px-4 py-3 text-gray-600 font-bold hover:bg-orange-400 hover:text-purple-800  00 rounded-lg transition-colors w-full text-left"
               >
                 <item.icon className="w-5 h-5" />
                 {!isCollapsed && <span>{item.label}</span>}

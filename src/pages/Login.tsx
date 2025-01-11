@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { User, Lock, Check } from 'lucide-react';
 import Logo from '../assets/Logo.png';
 
+
 interface LoginFormData {
     username: string;
     password: string;
@@ -15,6 +16,7 @@ const Login: React.FC = () => {
         username: '',
         password: '',
     });
+    
     const [error, setError] = useState<string | null>(null);
     const { login } = useAuth();
     const navigate = useNavigate();
