@@ -42,9 +42,9 @@ const Login: React.FC = () => {
 
     return (
         <div
-            className="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8"
+            className="min-h-screen flex items-center justify-center bg-blue-50 py-12 px-4 sm:px-6 lg:px-8"
             style={{
-                backgroundImage: 'url(https://images.pexels.com/photos/8728291/pexels-photo-8728291.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)',
+                backgroundImage: 'url()',
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
             }}
